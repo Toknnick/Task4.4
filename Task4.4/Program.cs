@@ -64,16 +64,20 @@ namespace Task4._4
             switch (consoleKey.Key)
             {
                 case ConsoleKey.UpArrow:
-                    positionDirectX = -1; positionDirectY = 0;
+                    positionDirectX = -1;
+                    positionDirectY = 0;
                     break;
                 case ConsoleKey.DownArrow:
-                    positionDirectX = 1; positionDirectY = 0;
+                    positionDirectX = 1;
+                    positionDirectY = 0;
                     break;
                 case ConsoleKey.LeftArrow:
-                    positionDirectX = 0; positionDirectY = -1;
+                    positionDirectX = 0;
+                    positionDirectY = -1;
                     break;
                 case ConsoleKey.RightArrow:
-                    positionDirectX = 0; positionDirectY = 1;
+                    positionDirectX = 0;
+                    positionDirectY = 1;
                     break;
                 case ConsoleKey.Enter:
                     isPlaying = false;
