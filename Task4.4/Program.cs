@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Task4._4
@@ -11,8 +11,8 @@ namespace Task4._4
             bool isPlaying = true;
             int positionX;
             int positionY;
-            int positionDX = 0;
-            int positionDY = 0;
+            int positionDirectX = 0;
+            int positionDirectY = 0;
             int collectDots = 0;
             int allDots = 0;
             Console.WriteLine("После создания карты для выхода нажмите Enter.");
@@ -31,11 +31,11 @@ namespace Task4._4
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo consoleKey = Console.ReadKey(true);
-                    ChangeDirection(consoleKey, ref positionDX, ref positionDY, ref isPlaying);
+                    ChangeDirection(consoleKey, ref positionDirectX, ref positionDirectY, ref isPlaying);
 
-                    if (map[positionX + positionDX, positionY + positionDY] != '#')
+                    if (map[positionX + positionDirectX, positionY + positionDirectY] != '#')
                     {
-                        Move(ref positionX, ref positionY, positionDX, positionDY);
+                        Move(ref positionX, ref positionY, positionDirectX, positionDirectY);
                         CollectDots(map, positionX, positionY, ref collectDots);
                     }
                 }
@@ -59,21 +59,21 @@ namespace Task4._4
         }
     
 
-        static void ChangeDirection(ConsoleKeyInfo consoleKey, ref int positionDX, ref int positionDY, ref bool isPlaying)
+        static void ChangeDirection(ConsoleKeyInfo consoleKey, ref int positionDirectX, ref int positionDirectY, ref bool isPlaying)
         {
             switch (consoleKey.Key)
             {
                 case ConsoleKey.UpArrow:
-                    positionDX = -1; positionDY = 0;
+                    positionDirectX = -1; positionDirectY = 0;
                     break;
                 case ConsoleKey.DownArrow:
-                    positionDX = 1; positionDY = 0;
+                    positionDirectX = 1; positionDirectY = 0;
                     break;
                 case ConsoleKey.LeftArrow:
-                    positionDX = 0; positionDY = -1;
+                    positionDirectX = 0; positionDirectY = -1;
                     break;
                 case ConsoleKey.RightArrow:
-                    positionDX = 0; positionDY = 1;
+                    positionDirectX = 0; positionDirectY = 1;
                     break;
                 case ConsoleKey.Enter:
                     isPlaying = false;
@@ -81,12 +81,12 @@ namespace Task4._4
             }
         }
 
-        static void Move(ref int positionX, ref int positionY, int positionDX, int positionDY)
+        static void Move(ref int positionX, ref int positionY, int positionDirectX, int positionDirectY)
         {
             Console.SetCursorPosition(positionY, positionX);
             Console.Write(" ");
-            positionX += positionDX;
-            positionY += positionDY;
+            positionX += positionDirectX;
+            positionY += positionDirectY;
             Console.SetCursorPosition(positionY, positionX);
             Console.Write('@');
         }
